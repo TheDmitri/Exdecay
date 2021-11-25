@@ -1,0 +1,2 @@
+//#define GLSDEBUG
+#define GLOBAL_LOOT_SYSTEM
