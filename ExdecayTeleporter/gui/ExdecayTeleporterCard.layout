@@ -1,0 +1,68 @@
+PanelWidgetClass ProductWrapper {
+ color 0 0 0 0
+ position 0 0
+ size 382.48999 587
+ hexactpos 0
+ vexactpos 0
+ hexactsize 1
+ vexactsize 1
+ style Outline
+ {
+  ButtonWidgetClass MapBtn {
+   disabled 0
+   clipchildren 1
+   keepsafezone 0
+   color 0 0 0 0.6588
+   position 0 0
+   size 1 1
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   scaled 0
+   userID 18011998
+   draggable 0
+   style MainMenu
+   "no focus" 0
+   switch once
+   {
+    ImageWidgetClass LandImage {
+     ignorepointer 1
+     position 0.01071 0.00741
+     size 0.97641 0.98332
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     scaled 0
+     imageTexture "{5EB486A2291F3EC2}ExdecayTeleporter/gui/cityland.edds"
+     mode blend
+     "src alpha" 1
+     stretch 1
+     "flip u" 0
+     filter 0
+     {
+      ImageWidgetClass Population {
+       ignorepointer 1
+       position 0.39855 0.9212
+       size 0.46712 0.06
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       imageTexture "{5A2FFD1B514F78BB}ExdecayTeleporter/gui/high.edds"
+       mode blend
+       "src alpha" 1
+       "no wrap" 0
+       stretch 1
+       "flip u" 0
+       filter 0
+       nocache 0
+       "Transition width" 0.154
+      }
+     }
+    }
+   }
+  }
+ }
+}

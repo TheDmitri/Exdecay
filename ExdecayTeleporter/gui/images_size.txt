@@ -1,0 +1,1 @@
+each image must be 382px - 587px

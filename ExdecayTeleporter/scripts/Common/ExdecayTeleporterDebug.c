@@ -1,0 +1,2 @@
+#define ETPDEBUG
+#define ExdecayTeleporter
