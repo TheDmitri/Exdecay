@@ -1,0 +1,93 @@
+FrameWidgetClass EZFrameWidget {
+ clipchildren 0
+ position -0.0191 -0.25253
+ size 0.39178 0.17866
+ halign center_ref
+ valign center_ref
+ hexactsize 0
+ vexactsize 0
+ {
+  PanelWidgetClass PanelEZ {
+   ignorepointer 1
+   position 6.24293 13.5536
+   size 519.00299 168.086
+   hexactpos 1
+   vexactpos 1
+   hexactsize 1
+   vexactsize 1
+  }
+  ImageWidgetClass ExtractionLogo {
+   visible 1
+   ignorepointer 1
+   position 0.00263 0.15587
+   size 0.98435 132.73399
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 1
+   imageTexture "{5FA544E022FE2CBE}ExtractionZone/gui/Extraction.edds"
+   mode additive
+   "src alpha" 1
+   stretch 1
+  }
+  TextWidgetClass EZText {
+   ignorepointer 1
+   position 0.6748 0.13804
+   size 0.13417 0.79699
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   draggable 0
+   style Bold
+   text "60"
+   font "gui/fonts/etelkatextpro58"
+   "text color" 0.0667 0.0667 0.0667 1
+   "exact text" 0
+   "text halign" center
+   "text valign" center
+  }
+  TextWidgetClass TextWidget0 {
+   visible 0
+   ignorepointer 1
+   position 0.0533 0.19648
+   size 0.61262 0.72567
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   text "EXTRACTION"
+   font "gui/fonts/etelkatextpro58"
+   "text halign" right
+   {
+    TextWidgetClass TextWidget1 {
+     ignorepointer 1
+     position 0.60654 0.45551
+     size 0.38517 0.435
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     style Bold
+     text "ZONE"
+     font "gui/fonts/etelkatextpro48"
+     "text halign" right
+    }
+   }
+  }
+  TextWidgetClass TextWidget2 {
+   visible 0
+   ignorepointer 1
+   position 0.67547 0.06389
+   size 0.01823 0.87791
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   style Bold
+   text ":"
+   "text halign" center
+   "text valign" center
+  }
+ }
+}
