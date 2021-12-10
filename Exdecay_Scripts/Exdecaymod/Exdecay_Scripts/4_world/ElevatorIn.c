@@ -2,7 +2,7 @@ class Land_EX_Building_Elevator_In extends BuildingSuper
 {
 	private static ref set< Land_EX_Building_Elevator_In > m_EntranceElevators = new set< Land_EX_Building_Elevator_In >;
 	private int m_currentOwner = 0;
-	private bool m_DoorState = false;
+	private int m_ElevatorState = StashStates.ELEVATOR_READY;
 	private int m_LoiterCount = 0;
 	private Land_EX_Building_Elevator_Out destination;
 
@@ -11,7 +11,7 @@ class Land_EX_Building_Elevator_In extends BuildingSuper
 	{
 		m_EntranceElevators.Insert( this );
 		RegisterNetSyncVariableInt("m_currentOwner");
-		RegisterNetSyncVariableBool("m_DoorState");
+		RegisterNetSyncVariableInt("m_ElevatorState");
 	}
 
 	void ~Land_EX_Building_Elevator_In()
@@ -37,7 +37,6 @@ class Land_EX_Building_Elevator_In extends BuildingSuper
 	{
 		//SetAnimationPhase("Door_l",1);
 		GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(OpenDoor, 5000, false, 0);
-		GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(SetDoorState, 5000, true);
 	}
 
 	void CloseDoors()
@@ -46,14 +45,14 @@ class Land_EX_Building_Elevator_In extends BuildingSuper
 		SetDoorState(false);
 	}
 
-	bool GetDoorState()
+	int GetElevatorState()
 	{
-		return m_DoorState;
+		return m_ElevatorState;
 	}
 
-	void SetDoorState(bool state)
+	void SetElevatorState(int state)
 	{
-		Print("SetDoorState to " + state);
+		Print("SetElevatorState to " + state);
 		m_DoorState = state;
 		SetSynchDirty();
 	}
@@ -61,6 +60,7 @@ class Land_EX_Building_Elevator_In extends BuildingSuper
 	void SetOwner(int OwnerID)
 	{
 		Print("SetOwner to " + OwnerID);
+		SetElevatorState(StashStates.ELEVATOR_READY);
 		m_currentOwner = OwnerID;
 		SetSynchDirty();
 	}
@@ -175,7 +175,7 @@ class Land_EX_Building_Elevator_In extends BuildingSuper
 			Print("Exit owner: " + outputElevator.GetOwner());
 			if (outputElevator.GetOwner() == 0)
 			{
-
+				SetElevatorState(StashStates.ELEVATOR_ASCEND);
 				SetDestination(outputElevator);
 				CloseDoor(0);
 				GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(ProcessTransfer, 5000, false, sendSolo);

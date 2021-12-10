@@ -6,7 +6,7 @@ class ActionExdecaySendElevatorUp : ActionInteractBase
 		m_CommandUID        = DayZPlayerConstants.CMD_ACTIONMOD_OPENDOORFW;
 		m_StanceMask        = DayZPlayerConstants.STANCEMASK_CROUCH | DayZPlayerConstants.STANCEMASK_ERECT;
 	}
-	override void CreateConditionComponents()  
+	override void CreateConditionComponents()
 	{
 		m_ConditionItem = new CCINone;
 		m_ConditionTarget = new CCTObject(UAMaxDistances.LARGE);
@@ -21,8 +21,8 @@ class ActionExdecaySendElevatorUp : ActionInteractBase
 	{
 		return false;
 	}
-		
-		
+
+
 	override bool ActionCondition ( PlayerBase player, ActionTarget target, ItemBase item )
 	{
 		Object target_object = target.GetObject();
@@ -33,17 +33,18 @@ class ActionExdecaySendElevatorUp : ActionInteractBase
 			shortId = GetGame().GetUserManager().GetTitleInitiator().GetUid().Substring(8, 9).ToInt();
 		else
 			shortId = player.GetIdentity().GetPlainId().Substring(8, 9).ToInt();
-		
 
-		if ( elevator.GetOwner() == shortId && selection == "out_button" )
+
+		if ( elevator.GetOwner() == shortId && selection == "out_button" && elevator.GetElevatorState() == StashStates.ELEVATOR_ASCEND)
 			return true;
-		
+
 		return false;
 	}
-		
+
 	override void OnExecuteServer( ActionData action_data )
 	{
 		Land_EX_Building_Elevator_Out elevator = Land_EX_Building_Elevator_Out.Cast( action_data.m_Target.GetObject() );
-		elevator.AssignOutput()
+		elevator.AssignOutput();
+		elevator.SetElevatorState(StashStates.ELEVATOR_READY);
 	}
 }

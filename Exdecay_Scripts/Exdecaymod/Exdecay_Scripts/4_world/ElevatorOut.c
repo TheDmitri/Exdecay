@@ -2,6 +2,7 @@ class Land_EX_Building_Elevator_Out extends BuildingSuper
 {
 	private static ref set< Land_EX_Building_Elevator_Out > m_ExitElevators = new set< Land_EX_Building_Elevator_Out >;
 	private int m_currentOwner = 0;
+	private int m_ElevatorState = false;
 	private Land_EX_Building_Elevator_In destination;
 
 
@@ -9,9 +10,12 @@ class Land_EX_Building_Elevator_Out extends BuildingSuper
 	{
 		m_ExitElevators.Insert( this );
 		RegisterNetSyncVariableInt("m_currentOwner");
+		RegisterNetSyncVariableInt("m_ElevatorState");
 	}
 	void ~Land_EX_Building_Elevator_Out()
 	{
+		if(!m_ExitElevators)return;
+		
 		int i;
 
 		i = m_ExitElevators.Find( this );
@@ -24,14 +28,29 @@ class Land_EX_Building_Elevator_Out extends BuildingSuper
 	{
 		return m_ExitElevators;
 	}
+
+	int GetElevatorState()
+	{
+		return m_ElevatorState;
+	}
+
+	void SetElevatorState(int state)
+	{
+		Print("SetElevatorState to " + state);
+		m_DoorState = state;
+		SetSynchDirty();
+	}
+
 	void OpenDoors()
 	{
 		GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(OpenDoor, 5000, false, 0);
 	}
+
 	void CloseDoors()
 	{
 		SetAnimationPhase("Door_l",0);
 	}
+
 	void SetOwner(int OwnerID)
 	{
 		Print("SetOwner to " + OwnerID);

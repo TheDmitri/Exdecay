@@ -9,8 +9,6 @@ enum ExdecayPlayerLocations
 };
 modded class PlayerBase
 {
-	int RequestedAction = 0;
-
 	override void OnPlayerLoaded()
 	{
 		super.OnPlayerLoaded();

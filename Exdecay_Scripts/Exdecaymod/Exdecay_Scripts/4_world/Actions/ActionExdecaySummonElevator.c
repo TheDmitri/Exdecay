@@ -29,9 +29,8 @@ class ActionExdecaySummonElevator : ActionInteractBase
 		Object target_object = target.GetObject();
 		Land_EX_Building_Elevator_In elevator = Land_EX_Building_Elevator_In.Cast( target_object );
 		string selection = target_object.GetActionComponentName( target.GetComponentIndex() );
-		if ( selection == "call_button" && elevator.GetOwner() == 0 )
+		if ( selection == "call_button" && elevator.GetOwner() == 0 && elevator.GetElevatorState() == StashStates.ELEVATOR_READY)
 		{
-			if(player.RequestedAction + 60 < GetTimeStamp())
 				return true;
 		}
 		return false;
@@ -42,19 +41,9 @@ class ActionExdecaySummonElevator : ActionInteractBase
 		elevator.ReleaseOwner();
 	}
 
-	int GetTimeStamp()
-  {
-  	int year, month, day, hour, minute, second;
-  	GetHourMinuteSecondUTC(hour, minute, second);
-  	GetYearMonthDayUTC(year, month, day);
-  	return JMDate.Timestamp(year,month,day,hour,minute,second);
-  }
-
 	override void OnExecuteServer( ActionData action_data )
 	{
 		PlayerBase player = PlayerBase.Cast( action_data.m_Player);
-		if(player)
-			player.RequestedAction = GetTimeStamp();
 		Land_EX_Building_Elevator_In elevator = Land_EX_Building_Elevator_In.Cast( action_data.m_Target.GetObject() );
 		int shortId = action_data.m_Player.GetIdentity().GetPlainId().Substring(8, 9).ToInt();
 		bool hasOtherReservation = false;
@@ -68,6 +57,7 @@ class ActionExdecaySummonElevator : ActionInteractBase
 		if (!hasOtherReservation)
 		{
 			elevator.SetOwner(shortId);
+			elevator.SetElevatorState(StashStates.ELEVATOR_CALLED);
 			GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(DelayedReleaseOwner, 15000, false, elevator);
 			elevator.OpenDoors();
 		}

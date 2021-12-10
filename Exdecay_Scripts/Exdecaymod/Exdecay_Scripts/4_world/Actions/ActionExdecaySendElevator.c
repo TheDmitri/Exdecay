@@ -35,7 +35,7 @@ class ActionExdecaySendElevator : ActionInteractBase
 			shortId = player.GetIdentity().GetPlainId().Substring(8, 9).ToInt();
 
 
-		if ( elevator.GetOwner() == shortId && selection == "out_button" && elevator.GetDoorState())
+		if ( elevator.GetOwner() == shortId && selection == "out_button" && elevator.GetElevatorState() == StashStates.ELEVATOR_CALLED)
 			return true;
 
 		return false;
@@ -86,7 +86,7 @@ class ActionExdecaySendElevatorSolo : ActionInteractBase
 			shortId = player.GetIdentity().GetPlainId().Substring(8, 9).ToInt();
 
 
-		if ( elevator.GetOwner() == shortId && selection == "out_button_solo" && elevator.GetDoorState())
+		if ( elevator.GetOwner() == shortId && selection == "out_button_solo" && elevator.GetElevatorState() == StashStates.ELEVATOR_CALLED)
 			return true;
 
 		return false;
@@ -96,5 +96,6 @@ class ActionExdecaySendElevatorSolo : ActionInteractBase
 	{
 		Land_EX_Building_Elevator_In elevator = Land_EX_Building_Elevator_In.Cast( action_data.m_Target.GetObject() );
 		elevator.AssignOutput(true)
+		elevator.SetElevatorState(StashStates.ELEVATOR_DESCEND);
 	}
 }
