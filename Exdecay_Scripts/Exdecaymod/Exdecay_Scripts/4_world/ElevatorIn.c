@@ -42,7 +42,7 @@ class Land_EX_Building_Elevator_In extends BuildingSuper
 	void CloseDoors()
 	{
 		SetAnimationPhase("Door_l",0);
-		SetDoorState(false);
+		SetElevatorState(false);
 	}
 
 	int GetElevatorState()
