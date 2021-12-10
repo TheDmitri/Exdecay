@@ -1,0 +1,7 @@
+//<'Exdecay_Scripts.pbo' properties via Mikero's dos tools, dll version 8.57>
+prefix=Exdecaymod\Exdecay_Scripts;
+Mikero=DePbo.dll.8.35;
+version=21120423;
+//PboType=Arma Addon;
+//PboType=Arma Addon;
+//</properties>

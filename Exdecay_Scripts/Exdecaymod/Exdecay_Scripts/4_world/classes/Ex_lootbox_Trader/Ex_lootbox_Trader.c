@@ -1,0 +1,1 @@
+class Ex_lootbox_Trader extends BuildingBase{};
