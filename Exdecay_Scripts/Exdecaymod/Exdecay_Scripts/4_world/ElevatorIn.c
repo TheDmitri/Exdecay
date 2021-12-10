@@ -37,11 +37,13 @@ class Land_EX_Building_Elevator_In extends BuildingSuper
 	{
 		//SetAnimationPhase("Door_l",1);
 		GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(OpenDoor, 5000, false, 0);
+		GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(SetDoorState, 5000, true);
 	}
 
 	void CloseDoors()
 	{
 		SetAnimationPhase("Door_l",0);
+		SetDoorState(false);
 	}
 
 	bool GetDoorState()
