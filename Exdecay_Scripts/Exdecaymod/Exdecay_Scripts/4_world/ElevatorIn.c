@@ -175,7 +175,7 @@ class Land_EX_Building_Elevator_In extends BuildingSuper
 			Print("Exit owner: " + outputElevator.GetOwner());
 			if (outputElevator.GetOwner() == 0)
 			{
-				SetElevatorState(StashStates.ELEVATOR_ASCEND);
+				outputElevator.etElevatorState(StashStates.ELEVATOR_ASCEND);
 				SetDestination(outputElevator);
 				CloseDoor(0);
 				GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(ProcessTransfer, 5000, false, sendSolo);
