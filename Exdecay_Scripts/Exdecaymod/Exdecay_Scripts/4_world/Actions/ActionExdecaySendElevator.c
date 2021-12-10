@@ -44,7 +44,8 @@ class ActionExdecaySendElevator : ActionInteractBase
 	override void OnExecuteServer( ActionData action_data )
 	{
 		Land_EX_Building_Elevator_In elevator = Land_EX_Building_Elevator_In.Cast( action_data.m_Target.GetObject() );
-		elevator.AssignOutput(false)
+		elevator.AssignOutput(false);
+		elevator.SetElevatorState(StashStates.ELEVATOR_DESCEND);
 	}
 }
 
