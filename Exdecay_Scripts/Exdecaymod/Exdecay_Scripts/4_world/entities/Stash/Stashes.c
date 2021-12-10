@@ -23,7 +23,8 @@ class ExdecayStashObject extends Container_Base
 	}
 	void ~ExdecayStashObject()
 	{
-		m_MapAllStashes.Remove(m_PlayerID);
+		if(m_MapAllStashes && m_MapAllStashes[m_PlayerID])
+				m_MapAllStashes.Remove(m_PlayerID);
 
 		int i;
 
