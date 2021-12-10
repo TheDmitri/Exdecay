@@ -15,7 +15,7 @@ class Land_EX_Building_Elevator_Out extends BuildingSuper
 	void ~Land_EX_Building_Elevator_Out()
 	{
 		if(!m_ExitElevators)return;
-		
+
 		int i;
 
 		i = m_ExitElevators.Find( this );
@@ -37,7 +37,7 @@ class Land_EX_Building_Elevator_Out extends BuildingSuper
 	void SetElevatorState(int state)
 	{
 		Print("SetElevatorState to " + state);
-		m_DoorState = state;
+		m_ElevatorState = state;
 		SetSynchDirty();
 	}
 

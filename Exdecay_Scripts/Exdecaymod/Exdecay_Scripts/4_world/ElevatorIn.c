@@ -53,7 +53,7 @@ class Land_EX_Building_Elevator_In extends BuildingSuper
 	void SetElevatorState(int state)
 	{
 		Print("SetElevatorState to " + state);
-		m_DoorState = state;
+		m_ElevatorState = state;
 		SetSynchDirty();
 	}
 
