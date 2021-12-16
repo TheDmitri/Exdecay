@@ -1,0 +1,497 @@
+FrameWidgetClass rootFrame {
+ position 0.00156 0.00168
+ size 0.99617 1.00047
+ hexactpos 0
+ vexactpos 0
+ hexactsize 0
+ vexactsize 0
+ {
+  PanelWidgetClass ExdecayTeleporterPanel {
+   visible 1
+   ignorepointer 1
+   color 0 0 0 0.8824
+   position 0.07425 0.15069
+   size 0.85111 0.68471
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   style rover_sim_colorable
+   {
+    ImageWidgetClass Title {
+     ignorepointer 1
+     position 0.08955 0.00586
+     size 0.83174 0.14125
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     imageTexture "{8E0C6A621EB02812}ExdecayTeleporter/gui/title.edds"
+     mode blend
+     "src alpha" 1
+     "no wrap" 0
+     stretch 1
+     filter 0
+    }
+    PanelWidgetClass MapPanel {
+     visible 1
+     ignorepointer 1
+     position 0.0151 0.15169
+     size 0.96569 0.83043
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     {
+      TextListboxWidgetClass SpawnPointList {
+       color 0 0 0 1
+       position 0.56366 0.03123
+       size 0.40639 0.94313
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       "title visible" 0
+       colums ""
+       lines 10
+       "highlight row" 1
+       font "gui/fonts/etelkatextpro"
+      }
+      PanelWidgetClass MapWrapper {
+       color 0.9725 0.8431 0 0
+       position 0.00594 0.0262
+       size 382 587
+       hexactpos 0
+       vexactpos 0
+       hexactsize 1
+       vexactsize 1
+       style blank
+       {
+        PanelWidgetClass ProductWrapper2 {
+         color 0 0 0 0
+         position 0 0
+         size 382.48999 587
+         hexactpos 0
+         vexactpos 0
+         hexactsize 1
+         vexactsize 1
+         style Outline
+         {
+          ButtonWidgetClass MapBtn2 {
+           disabled 0
+           clipchildren 1
+           keepsafezone 0
+           color 0 0 0 0.6588
+           position 0 0
+           size 1 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           scaled 0
+           userID 18011998
+           draggable 0
+           style MainMenu
+           "no focus" 0
+           switch once
+           {
+            ImageWidgetClass LandImage2 {
+             ignorepointer 1
+             position 0.01071 0.00741
+             size 0.97641 0.98332
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             scaled 0
+             imageTexture "{5EB486A2291F3EC2}ExdecayTeleporter/gui/cityland.edds"
+             mode blend
+             "src alpha" 1
+             stretch 1
+             "flip u" 0
+             filter 0
+             {
+              ImageWidgetClass Population2 {
+               ignorepointer 1
+               position 0.39855 0.9212
+               size 0.46712 0.06
+               hexactpos 0
+               vexactpos 0
+               hexactsize 0
+               vexactsize 0
+               imageTexture "{5A2FFD1B514F78BB}ExdecayTeleporter/gui/high.edds"
+               mode blend
+               "src alpha" 1
+               "no wrap" 0
+               stretch 1
+               "flip u" 0
+               filter 0
+               nocache 0
+               "Transition width" 0.154
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      ButtonWidgetClass SpawnButton {
+       position 0.25862 0.807
+       size 0.29627 0.17583
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       {
+        ImageWidgetClass SpawnImg {
+         ignorepointer 1
+         position 0.01999 0.103
+         size 0.9515 0.80708
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         imageTexture "{16646CE7E238DA8E}ExdecayTeleporter/gui/spawn.edds"
+         mode blend
+         "src alpha" 1
+         stretch 1
+         filter 0
+        }
+       }
+      }
+      ButtonWidgetClass CloseBttn {
+       color 0 0 0 1
+       position 0.97128 0.00161
+       size 0.02878 0.06557
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       style Editor
+       text "X"
+      }
+      RichTextWidgetClass MapDescription {
+       ignorepointer 1
+       position 0.2627 0.02416
+       size 0.29255 0.77512
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       style DayZNormal
+       text "Alpha - Our position now. "\
+       "So as for our alpha tests/release, we're testing our systems in terms of traders, lighting, extraction, AI, maps and core systems and ideals of what we're trying to achieve. This phase must be in a good position for not only for us, but for all of our players. This will rely on our players to help us keep on our toes for bug reports, map issues, loot issues etc, which all the information we have been provided in both public and private has been amazing"
+       font "gui/fonts/etelkatextpro28"
+       "exact text" 1
+       "text valign" center
+       wrap 1
+       "condense whitespace" 1
+       "strip newlines" 1
+      }
+     }
+    }
+    GridSpacerWidgetClass MapsGrid {
+     visible 0
+     ignorepointer 1
+     position 0.01268 0.15006
+     size 0.9736 0.81849
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     Columns 4
+     Rows 1
+     {
+      PanelWidgetClass ProductWrapper {
+       color 0 0 0 0
+       position 0 0
+       size 486.48898 552.573
+       hexactpos 0
+       vexactpos 0
+       hexactsize 1
+       vexactsize 1
+       style Outline
+       {
+        ButtonWidgetClass MapBtn {
+         disabled 0
+         clipchildren 1
+         keepsafezone 0
+         color 0 0 0 0.6588
+         position 0 0
+         size 0.65556 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         fixaspect outside
+         userID 18011998
+         draggable 0
+         style MenuDefault
+         "no focus" 0
+         switch once
+         {
+          ImageWidgetClass LandImage {
+           ignorepointer 1
+           position 0.01787 0.01297
+           size 382.06799 587.55298
+           hexactpos 0
+           vexactpos 0
+           hexactsize 1
+           vexactsize 1
+           imageTexture "{E64E8B65D1BBA643}ExdecayTeleporter/gui/farmland.edds"
+           "src alpha" 1
+           stretch 1
+           {
+            ImageWidgetClass Population {
+             ignorepointer 1
+             position 0.35857 0.92118
+             size 0.61705 0.06
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             imageTexture "{99B5F809FE7CAAA5}ExdecayTeleporter/gui/low.edds"
+             mode blend
+             "src alpha" 1
+             stretch 1
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      PanelWidgetClass ProductWrapper0 {
+       color 0 0 0 0
+       position 0 0
+       size 486.48898 552.573
+       hexactpos 0
+       vexactpos 0
+       hexactsize 1
+       vexactsize 1
+       style Outline
+       {
+        ButtonWidgetClass MapBtn0 {
+         disabled 0
+         clipchildren 1
+         keepsafezone 0
+         color 0 0 0 0.6588
+         position 0 0
+         size 0.65526 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         fixaspect outside
+         userID 18011998
+         draggable 0
+         style MenuDefault
+         "no focus" 0
+         switch once
+         {
+          ImageWidgetClass LandImage0 {
+           ignorepointer 1
+           position 0.009 0.008
+           size 0.98012 0.98424
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           imageTexture "{DF4BBD67821F1986}ExdecayTeleporter/gui/ICELAND.edds"
+           "src alpha" 1
+           stretch 1
+           {
+            ImageWidgetClass Population0 {
+             ignorepointer 1
+             position 0.35857 0.92118
+             size 0.61705 0.06
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             imageTexture "{99B5F809FE7CAAA5}ExdecayTeleporter/gui/low.edds"
+             mode blend
+             "src alpha" 1
+             stretch 1
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      PanelWidgetClass ProductWrapper1 {
+       color 0 0 0 0
+       position 0 0
+       size 486.48898 552.573
+       hexactpos 0
+       vexactpos 0
+       hexactsize 1
+       vexactsize 1
+       style Outline
+       {
+        ButtonWidgetClass MapBtn1 {
+         disabled 0
+         clipchildren 1
+         keepsafezone 0
+         color 0 0 0 0.6588
+         position 0 0
+         size 0.65814 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         fixaspect outside
+         userID 18011998
+         draggable 0
+         style MenuDefault
+         "no focus" 0
+         switch once
+         {
+          ImageWidgetClass LandImage1 {
+           ignorepointer 1
+           position 0.009 0.008
+           size 0.98012 0.98424
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           imageTexture "{5EB486A2291F3EC2}ExdecayTeleporter/gui/cityland.edds"
+           "src alpha" 1
+           stretch 1
+           {
+            ImageWidgetClass Population1 {
+             ignorepointer 1
+             position 0.35857 0.92118
+             size 0.61705 0.06
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             imageTexture "{99B5F809FE7CAAA5}ExdecayTeleporter/gui/low.edds"
+             mode blend
+             "src alpha" 1
+             stretch 1
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      PanelWidgetClass ProductWrapper3 {
+       color 0 0 0 0
+       position 0 0
+       size 486.48898 552.573
+       hexactpos 0
+       vexactpos 0
+       hexactsize 1
+       vexactsize 1
+       style Outline
+       {
+        ButtonWidgetClass MapBtn3 {
+         disabled 0
+         clipchildren 1
+         keepsafezone 0
+         color 0 0 0 0.6588
+         position 0 0
+         size 0.56069 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         fixaspect outside
+         userID 18011998
+         draggable 0
+         style MenuDefault
+         "no focus" 0
+         switch once
+         {
+          ImageWidgetClass LandImage3 {
+           ignorepointer 1
+           position 0.009 0.008
+           size 0.97618 0.84061
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           imageTexture "{DC7FEEFA3F58049E}ExdecayTeleporter/gui/forestland.edds"
+           "src alpha" 1
+           stretch 1
+           {
+            ImageWidgetClass Population3 {
+             ignorepointer 1
+             position 0.35857 0.92118
+             size 0.61705 0.06
+             hexactpos 0
+             vexactpos 0
+             hexactsize 0
+             vexactsize 0
+             imageTexture "{99B5F809FE7CAAA5}ExdecayTeleporter/gui/low.edds"
+             mode blend
+             "src alpha" 1
+             stretch 1
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  PanelWidgetClass ConfirmationPanel {
+   visible 0
+   ignorepointer 1
+   position 0.30309 0.35606
+   size 0.42679 0.27322
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   style rover_sim_black
+   {
+    RichTextWidgetClass ConfirmationText {
+     ignorepointer 1
+     position 0.03755 0.1325
+     size 0.919 0.352
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     text "YOU'RE GOING TO LOOSE EVERY ITEM THAT YOU WEAR, DO YOU STILL WANT TO GO ?"
+     "text halign" center
+     "text valign" center
+     wrap 1
+     "condense whitespace" 1
+    }
+    ButtonWidgetClass BttnYes {
+     color 0.1569 0.6235 0.2745 1
+     position 0.034 0.588
+     size 0.429 0.255
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     style Default
+     text "YES"
+    }
+    ButtonWidgetClass BttnNo {
+     color 0.6235 0.1569 0.1569 1
+     position 0.528 0.588
+     size 0.429 0.255
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     style Default
+     text "NO"
+    }
+   }
+  }
+ }
+}

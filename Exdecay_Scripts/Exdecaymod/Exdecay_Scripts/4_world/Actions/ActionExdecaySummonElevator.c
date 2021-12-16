@@ -38,6 +38,7 @@ class ActionExdecaySummonElevator : ActionInteractBase
 
 	void DelayedReleaseOwner(Land_EX_Building_Elevator_In elevator)
 	{
+		Sleep(15000);
 		elevator.ReleaseOwner();
 	}
 
@@ -58,7 +59,8 @@ class ActionExdecaySummonElevator : ActionInteractBase
 		{
 			elevator.SetOwner(shortId);
 			elevator.SetElevatorState(StashStates.ELEVATOR_CALLED);
-			GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(DelayedReleaseOwner, 15000, false, elevator);
+			//GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(DelayedReleaseOwner, 15000, false, elevator);
+			thread DelayedReleaseOwner();
 			elevator.OpenDoors();
 		}
 	}

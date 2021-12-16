@@ -43,12 +43,20 @@ class Land_EX_Building_Elevator_Out extends BuildingSuper
 
 	void OpenDoors()
 	{
-		GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(OpenDoor, 5000, false, 0);
+		Sleep(5000);
+		OpenDoor(0);
+		//GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(OpenDoor, 5000, false, 0);
 	}
 
 	void CloseDoors()
 	{
 		SetAnimationPhase("Door_l",0);
+	}
+
+	void DelaySetOwner(int OwnerID)
+	{
+		Sleep(5000);
+		SetOwner(OwnerID);
 	}
 
 	void SetOwner(int OwnerID)
@@ -86,7 +94,8 @@ class Land_EX_Building_Elevator_Out extends BuildingSuper
 	{
 		destination = dest;
 		destination.SetOwner(this.GetOwner());
-		GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(ProcessTransfer, 7000, false);
+		thread ProcessTransfer();
+		//GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(ProcessTransfer, 7000, false);
 	}
 	Land_EX_Building_Elevator_In GetDestination()
 	{
@@ -103,12 +112,20 @@ class Land_EX_Building_Elevator_Out extends BuildingSuper
 			Land_EX_Building_Elevator_In outputElevator = Land_EX_Building_Elevator_In.GetAll()[i];
 			if (outputElevator.GetOwner() == 0)
 			{
-				GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(CloseDoor, 2000, false, 0);
+				thread DelayCloseDoor();
+				//GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(CloseDoor, 2000, false, 0);
 				SetDestination(outputElevator);
 				return;
 			}
 		}
 	}
+
+	void DelayCloseDoor()
+	{
+		Sleep(2000);
+		CloseDoor(0);
+	}
+
 	void SetupHideout()
 	{
 		bool hasStash = false;
@@ -156,6 +173,7 @@ class Land_EX_Building_Elevator_Out extends BuildingSuper
 	}
 	void ProcessTransfer() //placeholder for testing
 	{
+		Sleep(7000);
 		Print("Transfer begins");
 		ref array<Object> nearest_objects = new array<Object>;
 		ref array<CargoBase> proxy_cargos = new array<CargoBase>;
@@ -177,20 +195,25 @@ class Land_EX_Building_Elevator_Out extends BuildingSuper
 				vector offset = this.GetOffset(player.GetPosition());
 				vector WarpTo = (destPos - offset);
 				player.SetPosition(WarpTo);
+				if(!player.GetIdentity())return;
 				NotificationSystem.Create(new StringLocaliser("Hideout Elevator"), new StringLocaliser( "Please exit the elevator in a timely manner."), "set:ccgui_enforce image:HudBuild", ARGB( 255, 221, 38, 38 ), 3, player.GetIdentity());
 			}
 		}
 		Print("Release owner");
-		GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(SetOwner, 5000, false, 0);
+		thread DelaySetOwner(0);
+		//GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(SetOwner, 5000, false, 0);
 		GetDestination().ReleaseOwner();
-		GetDestination().OpenDoors();
-		GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(ClearHideout, 15000, false);
+		thread GetDestination().OpenDoors();
+		thread ClearHideout();
+		//GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(ClearHideout, 15000, false);
 	}
 
 	void ClearHideout() //very much placeholder
 	{
-		ref array<Object> nearest_objects = new array<Object>;
-		ref array<CargoBase> proxy_cargos = new array<CargoBase>;
+		Sleep(15000);
+
+		array<Object> nearest_objects = new array<Object>;
+		array<CargoBase> proxy_cargos = new array<CargoBase>;
 		GetGame().GetObjectsAtPosition( GetPosition(), 20, nearest_objects, proxy_cargos );
 
 		for ( int i = 0; i < nearest_objects.Count(); i++ )
@@ -200,10 +223,12 @@ class Land_EX_Building_Elevator_Out extends BuildingSuper
 			{
 				PlayerBase player = PlayerBase.Cast( nearest_object );
 				player.SetPosition("218.9 35 395.1");
+				if(!player.GetIdentity())return;
 				NotificationSystem.Create(new StringLocaliser("Hideout"), new StringLocaliser( "The owner of this hideout has left so you have been removed."), "set:ccgui_enforce image:HudBuild", ARGB( 255, 221, 38, 38 ), 3, player.GetIdentity());
 			};
 		};
-		GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(CloseDoor, 2000, false, 0);
+		thread DelayCloseDoor();
+		//GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(CloseDoor, 2000, false, 0);
 	}
 	override void SetActions()
 	{

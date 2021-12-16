@@ -36,7 +36,9 @@ class Land_EX_Building_Elevator_In extends BuildingSuper
 	void OpenDoors()
 	{
 		//SetAnimationPhase("Door_l",1);
-		GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(OpenDoor, 5000, false, 0);
+		Sleep(5000);
+		OpenDoors(0);
+		//GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(OpenDoor, 5000, false, 0);
 	}
 
 	void CloseDoors()
@@ -55,6 +57,12 @@ class Land_EX_Building_Elevator_In extends BuildingSuper
 		Print("SetElevatorState to " + state);
 		m_ElevatorState = state;
 		SetSynchDirty();
+	}
+
+	void DelaySetOwner(int OwnerID)
+	{
+		Sleep(5000);
+		SetOwner(OwnerID);
 	}
 
 	void SetOwner(int OwnerID)
@@ -86,6 +94,13 @@ class Land_EX_Building_Elevator_In extends BuildingSuper
 		}
 		return true;
 	}
+
+	void DelayReleaseOwner()
+	{
+		Sleep(25000);
+		ReleaseOwner();
+	}
+
 	void ReleaseOwner()
 	{
 		Print("ReleaseOwner Start");
@@ -114,8 +129,8 @@ class Land_EX_Building_Elevator_In extends BuildingSuper
 				}
 				m_LoiterCount++;
 
-				GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(ReleaseOwner, 25000, false);
-
+				thread DelayReleaseOwner();
+				//GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(ReleaseOwner, 25000, false);
 			}
 			else //<pos x="683.888" z="595.531" />
 			{
@@ -178,7 +193,8 @@ class Land_EX_Building_Elevator_In extends BuildingSuper
 				outputElevator.etElevatorState(StashStates.ELEVATOR_ASCEND);
 				SetDestination(outputElevator);
 				CloseDoor(0);
-				GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(ProcessTransfer, 5000, false, sendSolo);
+				thread ProcessTransfer(sendSolo);
+				//GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(ProcessTransfer, 5000, false, sendSolo);
 				return;
 			}
 		}
@@ -186,6 +202,7 @@ class Land_EX_Building_Elevator_In extends BuildingSuper
 
 	void ProcessTransfer(bool sendSolo) //placeholder for testing
 	{
+		Sleep(5000);
 		Print("Transfer begins");
 		ref array<Object> nearest_objects = new array<Object>;
 		ref array<CargoBase> proxy_cargos = new array<CargoBase>;
@@ -224,8 +241,8 @@ class Land_EX_Building_Elevator_In extends BuildingSuper
 		Print("Release owner");
 		GetDestination().SetupHideout();
 		GetDestination().OpenDoors();
-		GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(SetOwner, 5000, false, 0);
-
+		thread DelaySetOwner(0);
+		//GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(SetOwner, 5000, false, 0);
 	}
 	override void SetActions()
 	{
