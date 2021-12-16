@@ -60,7 +60,7 @@ class ActionExdecaySummonElevator : ActionInteractBase
 			elevator.SetOwner(shortId);
 			elevator.SetElevatorState(StashStates.ELEVATOR_CALLED);
 			//GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(DelayedReleaseOwner, 15000, false, elevator);
-			thread DelayedReleaseOwner();
+			thread DelayedReleaseOwner(elevator);
 			elevator.OpenDoors();
 		}
 	}
